@@ -51,11 +51,12 @@ class Order
      * Setter for value
      *
      * @param float $value
-     * @return void
+     * @return Order
      */
-    public function setValue(float $value)
+    public function setValue(float $value): Order
     {
         $this->value = $value;
+        return $this;
     }
 
     // some actions

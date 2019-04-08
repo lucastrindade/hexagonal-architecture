@@ -5,6 +5,7 @@ namespace App\Order\Infrastructure\Persistence\Doctrine;
 
 use App\Order\Domain\Repository\OrderRepository;
 use App\Order\Domain\Entity\Order;
+use Doctrine\ORM\EntityManager;
 
 class DoctrineOrderRepository implements OrderRepository
 {
