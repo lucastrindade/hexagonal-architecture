@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Order\Infrastructure\Http\Controller;
 
 use App\Order\Application\Service\OrderService;
+use App\Order\Domain\Repository\OrderRepository;
 
 class OrderController 
 {
@@ -12,6 +13,12 @@ class OrderController
      * @var OrderService $service
      */
     private $service;
+
+    /**
+     * @Inject
+     * @var OrderRepository $repository
+     */
+    private $repository;
 
     /**
      * Find an Order
@@ -23,7 +30,7 @@ class OrderController
      */
     public function show(Request $request, Response $response, int $id)
     {
-
+        return $response->withJson($this->repository->fromId($id));
     }
 
     /**

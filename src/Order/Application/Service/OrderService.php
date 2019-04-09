@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Order\Application\Service;
 
+use Ramsey\Uuid\Uuid;
+
 class OrderService
 {
     /**
@@ -31,6 +33,11 @@ class OrderService
      */
     public function createNewOrder(float $value)
     {
-        // pensar este caso
+        $userId = Uuid::uuid4()->toString();
+        $order = new Order($userId, $value);
+        $this->orderRepository->save($order);
+
+        // fake logger
+        \Logger::save('create order');
     }
 }

@@ -18,10 +18,10 @@ class Order
     /**
      * Order constructor
      *
-     * @param integer $id
+     * @param string $id
      * @param float $value
      */
-    public function __construct(int $id, float $value)
+    public function __construct(string $id, float $value)
     {
         $this->id = $id;
         $this->value = $value;

@@ -6,9 +6,26 @@ namespace App\Order\Infrastructure\Persistence\Doctrine;
 use App\Order\Domain\Repository\OrderRepository;
 use App\Order\Domain\Entity\Order;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityRepository;
 
-class DoctrineOrderRepository implements OrderRepository
+class DoctrineOrderRepository extends EntityRepository implements OrderRepository
 {
+    /**
+     * Returns an Order by identification
+     *
+     * @param integer $id
+     * @return Order
+     */
+    public function fromId(int $id): Order
+    {
+        $order = $this->find($id);
+        if (empty($order)) {
+            throw new \InvalidArgumentException('Invalid order id');
+        }
+
+        return $order;
+    }
+
     /**
      * Store the order
      *

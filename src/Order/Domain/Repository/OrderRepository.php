@@ -8,6 +8,14 @@ use App\Order\Domain\Entity\Order;
 interface OrderRepository 
 {
     /**
+     * Returns an Order by identification
+     *
+     * @param integer $id
+     * @return Order
+     */
+    public function fromId(int $id): Order;
+
+    /**
      * Store the order
      *
      * @param Order $order
