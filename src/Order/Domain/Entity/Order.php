@@ -3,10 +3,12 @@ declare(strict_types=1);
 
 namespace App\Order\Domain\Entity;
 
+use App\Order\Domain\ValueObject\OrderId;
+
 class Order 
 {
     /**
-     * @var int id
+     * @var OrderId id
      */
     protected $id;
 
@@ -18,10 +20,10 @@ class Order
     /**
      * Order constructor
      *
-     * @param string $id
+     * @param OrderId $id
      * @param float $value
      */
-    public function __construct(string $id, float $value)
+    public function __construct(OrderId $id, float $value)
     {
         $this->id = $id;
         $this->value = $value;
@@ -30,9 +32,9 @@ class Order
     /**
      * Getter for ID
      *
-     * @return integer
+     * @return OrderId
      */
-    public function getId(): int
+    public function getId(): OrderId
     {
         return $this->id;
     }

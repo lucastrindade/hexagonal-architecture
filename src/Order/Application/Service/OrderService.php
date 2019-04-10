@@ -33,7 +33,7 @@ class OrderService
      */
     public function createNewOrder(float $value)
     {
-        $userId = Uuid::uuid4()->toString();
+        $userId = $this->orderRepository->nextIdentity();
         $order = new Order($userId, $value);
         $this->orderRepository->save($order);
 
