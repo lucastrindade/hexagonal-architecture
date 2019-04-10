@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Order\Infrastructure\Http\Controller;
 
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use App\Order\Application\Service\OrderService;
 use App\Order\Domain\Repository\OrderRepository;
 
@@ -28,7 +30,7 @@ class OrderController
      * @param integer $id
      * @return Response
      */
-    public function show(Request $request, Response $response, int $id)
+    public function show(ServerRequestInterface $request, ResponseInterface $response, int $id)
     {
         return $response->withJson($this->repository->fromId($id));
     }
@@ -40,7 +42,7 @@ class OrderController
      * @param Response $response
      * @return Response
      */
-    public function save(Request $request, Response $response)
+    public function save(ServerRequestInterface $request, ResponseInterface $response)
     {
         $data = $request->getParsedBody();
         return $response->withJson($this->service->createNewOrder((float)$data['value']));
